@@ -1,0 +1,93 @@
+* text=auto eol=crlf
+
+# Source code
+*.cs text diff=csharp
+*.csx text diff=csharp
+*.vb text
+*.vbx text
+*.fs text
+*.fsx text
+*.fsi text
+*.ml text
+*.mli text
+
+# Web files
+*.html text diff=html
+*.css text diff=css
+*.js text diff=javascript
+*.jsx text diff=javascript
+*.ts text diff=typescript
+*.tsx text diff=typescript
+*.json text
+*.xml text
+*.svg text
+
+# Documentation
+*.md text diff=markdown
+*.txt text
+*.adoc text
+*.tex text
+
+# Configuration files
+*.yml text
+*.yaml text
+*.toml text
+*.ini text
+*.cfg text
+*.config text
+
+# Scripts
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.sh text eol=lf
+
+# Exclude files from exporting
+.gitattributes export-ignore
+.gitignore export-ignore
+.gitkeep export-ignore
+
+# Binary files
+*.dll binary
+*.exe binary
+*.pdb binary
+*.lib binary
+*.obj binary
+*.zip binary
+*.7z binary
+*.tar.gz binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+*.gz binary
+*.pdf binary
+*.ttf binary
+*.eot binary
+*.woff binary
+*.woff2 binary
+
+# .NET specific
+*.sln text eol=crlf merge=union
+*.csproj text merge=union
+*.vbproj text merge=union
+*.vcxproj text merge=union
+*.vcproj text merge=union
+*.dbproj text merge=union
+*.fsproj text merge=union
+*.lsproj text merge=union
+*.wixproj text merge=union
+*.modelproj text merge=union
+*.sqlproj text merge=union
+*.wwaproj text merge=union
+*.xproj text merge=union
+*.props text merge=union
+*.filters text merge=union
+*.vcxitems text merge=union
