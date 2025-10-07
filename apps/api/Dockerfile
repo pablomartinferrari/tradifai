@@ -2,8 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy solution and project files
-COPY tradifai.sln ./
+# Copy project files for restore
 COPY apps/api/Tradifai.Api/*.csproj ./apps/api/Tradifai.Api/
 COPY libs/domain/marketdata/Tradifai.Domain.MarketData/*.csproj ./libs/domain/marketdata/Tradifai.Domain.MarketData/
 COPY libs/domain/options-analytics/Tradifai.Domain.OptionsAnalytics/*.csproj ./libs/domain/options-analytics/Tradifai.Domain.OptionsAnalytics/
@@ -15,15 +14,18 @@ COPY libs/application/Tradifai.Application/*.csproj ./libs/application/Tradifai.
 COPY libs/infrastructure/Tradifai.Infrastructure/*.csproj ./libs/infrastructure/Tradifai.Infrastructure/
 COPY libs/contracts/Tradifai.Contracts/*.csproj ./libs/contracts/Tradifai.Contracts/
 
-# Restore dependencies
+# Restore dependencies for API project only
+WORKDIR /src/apps/api/Tradifai.Api
 RUN dotnet restore
 
 # Copy source code
-COPY . .
+WORKDIR /src
+COPY apps/ ./apps/
+COPY libs/ ./libs/
 
 # Build the application
 WORKDIR /src/apps/api/Tradifai.Api
-RUN dotnet build -c Release -o /app/build
+RUN dotnet build -c Release -o /app/build --no-restore
 
 # Publish stage
 FROM build AS publish
